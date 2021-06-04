@@ -30,6 +30,16 @@ body {
   border-color: #007bff;
 }
 
+.search {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 5px;
+}
+
+.search-input {
+  border-radius: 5px;
+}
 .gallery {
   display: flex;
   margin-right: auto;
@@ -61,6 +71,7 @@ body {
 
 .stats-item {
   margin-right: 5px;
+  color: rgb(3, 77, 126);
 }
 
 .hits li {
