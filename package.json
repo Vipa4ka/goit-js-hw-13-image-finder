@@ -5,8 +5,8 @@
   "main": "index.js",
  
   "scripts": {
-    "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-13-image-finder/"
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url /goit-js-hw-13-image-finder/"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
   "author": "Elena Ilieva <vipa4ka@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Vipa4ka/goit-js-hw-13-image-finder/issues"
+    "url": "https://github.com/Vipa4ka/goit-js-hw-13-image-finder#readme"
   },
    "homepage": "https://github.com/Vipa4ka/goit-js-hw-13-image-finder",
   "devDependencies": {
