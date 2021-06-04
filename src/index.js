@@ -1,12 +1,13 @@
 import './sass/main.scss';
 // import NewsApiService from '../src/apiService';
 import NewsApiService from './apiService';
+import hitsTpl from './tamplates/galleryCard.hbs';
 // import './gallery';
 
 const refs = {
     element: document.getElementById('.my-element-selector'),
     searchForm: document.querySelector('.search-form'),
-    articlesContainer: document.querySelector('.gallery'),
+    hitsContainer: document.querySelector('.gallery'),
     loadMoreBtn: document.querySelector('[data-action="load-more"]')
 };
 
@@ -18,21 +19,28 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
 function onSearch(e) {
     e.preventDefault();
-    
+
+    clearHitsContainer();
     newsApiService.query = e.currentTarget.elements.query.value;
     newsApiService.resetPage();
-    newsApiService.fetchArticles();
+    newsApiService.fetchArticles().then (appendHitsMarkup);
 };
 
 function onLoadMore() {
-    newsApiService.fetchArticles();
+    newsApiService.fetchArticles().then (appendHitsMarkup);
       
 };
 
+function appendHitsMarkup(hits) {
+    refs.hitsContainer.insertAdjacentHTML('beforeend', hitsTpl(hits));
+}
+
+function clearHitsContainer() {
+    refs.hitsContainer.innerHTML = '';
+}
 
 
-
-// // const element = document.getElementById('.my-element-selector');
+// const element = document.getElementById('.my-element-selector');
 // refs.element.scrollIntoView({
 //   behavior: 'smooth',
 //   block: 'end',

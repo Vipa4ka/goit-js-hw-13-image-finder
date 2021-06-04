@@ -7,10 +7,11 @@ export default class NewsApiService{
     fetchArticles() {
     const BASE_URL = 'https://pixabay.com/api/?image_type=photo&orientation=horizontal&';
     const KEY = '21917669-1fedcfe337ac78c8906ac8c38';
-    fetch(`${BASE_URL}q=${this.searchQuery}&page=${this.page}&per_page=12&key=${KEY}`)
+    return fetch(`${BASE_URL}q=${this.searchQuery}&page=${this.page}&per_page=12&key=${KEY}`)
         .then(r => r.json())
-        .then(data => {
+        .then(({hits}) => {
             this.page += 1;
+            return hits;
         });
         
     }
