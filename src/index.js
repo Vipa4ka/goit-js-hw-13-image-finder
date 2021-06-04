@@ -1,8 +1,7 @@
 import './sass/main.scss';
-// import NewsApiService from '../src/apiService';
 import NewsApiService from './apiService';
 import hitsTpl from './tamplates/galleryCard.hbs';
-// import './gallery';
+
 
 const refs = {
     element: document.getElementById('.my-element-selector'),
