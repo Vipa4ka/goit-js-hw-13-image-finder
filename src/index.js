@@ -4,8 +4,7 @@ import hitsTpl from './tamplates/galleryCard.hbs';
 import LoadMoreBtn from './loadMore';
 
 
-const refs = {
-    element: document.getElementById('.my-element-selector'),
+const refs = {    
     searchForm: document.querySelector('.search-form'),
     hitsContainer: document.querySelector('.gallery'),    
 };
@@ -15,12 +14,10 @@ const loadMoreBtn = new LoadMoreBtn({
     hidden: true,
 });
 
-
 const newsApiService = new NewsApiService();
 
 refs.searchForm.addEventListener('submit', onSearch);
 loadMoreBtn.refs.button.addEventListener('click', fetchHits);
-
 
 function onSearch(e) {
     e.preventDefault();    
@@ -28,21 +25,27 @@ function onSearch(e) {
     loadMoreBtn.show();
     newsApiService.resetPage();
     clearHitsContainer();
-    fetchHits();
+    fetchHits();    
 }
 
-
-
-function fetchHits() {
+function fetchHits() {   
     loadMoreBtn.disable();  
     newsApiService.fetchArticles().then(hits => {        
         appendHitsMarkup(hits);
-        loadMoreBtn.enable();        
+        loadMoreBtn.enable();       
     });    
+}
+
+function scroll() {    
+    refs.hitsContainer.scrollIntoView({
+    behavior: 'smooth',
+    block: 'end',
+    });
 }
 
 function appendHitsMarkup(hits) {
     refs.hitsContainer.insertAdjacentHTML('beforeend', hitsTpl(hits));
+    scroll(hits);
 }
 
 function clearHitsContainer() {
@@ -50,11 +53,7 @@ function clearHitsContainer() {
 }
 
 
-// const element = document.getElementById('.my-element-selector');
-// refs.element.scrollIntoView({
-//   behavior: 'smooth',
-//   block: 'end',
-// });
+
 
 
 
